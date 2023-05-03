@@ -667,7 +667,7 @@ def paramToDict(place, parameters=None):
 
                         message = "are you really sure that you want to continue (sqlmap could have problems)? [y/N] "
 
-                        if not readInput(message, default='N', boolean=True):
+                        if not readInput(message, default='Y', boolean=True):
                             raise SqlmapSilentQuitException
                     elif not _:
                         warnMsg = "provided value for parameter '%s' is empty. " % parameter
@@ -714,7 +714,7 @@ def paramToDict(place, parameters=None):
                                     message = "it appears that provided value for %sparameter '%s' " % ("%s " % place if place != parameter else "", parameter)
                                     message += "is JSON deserializable. Do you want to inject inside? [y/N] "
 
-                                    if readInput(message, default='N', boolean=True):
+                                    if readInput(message, default='Y', boolean=True):
                                         del testableParameters[parameter]
                                         testableParameters.update(candidates)
                                     break
@@ -727,7 +727,7 @@ def paramToDict(place, parameters=None):
                             message = "it appears that provided value for %sparameter '%s' " % ("%s " % place if place != parameter else "", parameter)
                             message += "has boundaries. Do you want to inject inside? ('%s') [y/N] " % getUnicode(_)
 
-                            if readInput(message, default='N', boolean=True):
+                            if readInput(message, default='Y', boolean=True):
                                 testableParameters[parameter] = re.sub(r"\b(%s\s*=\s*)%s" % (re.escape(parameter), re.escape(testableParameters[parameter])), (r"\g<1>%s" % re.sub(regex, r"\g<1>%s\g<2>" % BOUNDED_INJECTION_MARKER, testableParameters[parameter].replace("\\", r"\\"))), parameters)
                             break
 
@@ -2441,7 +2441,7 @@ def getSQLSnippet(dbms, sfile, **variables):
 
         msg = "do you want to provide the substitution values? [y/N] "
 
-        if readInput(msg, default='N', boolean=True):
+        if readInput(msg, default='Y', boolean=True):
             for var in variables:
                 msg = "insert value for variable '%s': " % var
                 val = readInput(msg, default="")
@@ -3975,7 +3975,7 @@ def createGithubIssue(errMsg, excMsg):
     msg += "with the unhandled exception information at "
     msg += "the official Github repository? [y/N] "
     try:
-        choice = readInput(msg, default='N', checkBatch=False, boolean=True)
+        choice = readInput(msg, default='Y', checkBatch=False, boolean=True)
     except:
         choice = None
 
