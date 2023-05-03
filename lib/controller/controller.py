@@ -366,7 +366,7 @@ def start():
                     message += "against '%s'. Do you want to skip " % conf.hostname
                     message += "further tests involving it? [Y/n]"
 
-                    kb.skipVulnHost = readInput(message, default='Y', boolean=True)
+                    kb.skipVulnHost = readInput(message, default='N', boolean=True)
 
                 testSqlInj = not kb.skipVulnHost
 
@@ -743,9 +743,9 @@ def start():
                 logger.warning(warnMsg)
 
                 message = "do you want to skip to the next target in list? [Y/n/q]"
-                choice = readInput(message, default='Y').upper()
+                choice = readInput(message, default='N').upper()
 
-                if choice == 'N':
+                if choice == 'Y':
                     return False
                 elif choice == 'Q':
                     raise SqlmapUserQuitException
