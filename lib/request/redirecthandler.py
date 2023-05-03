@@ -52,7 +52,7 @@ class SmartRedirectHandler(_urllib.request.HTTPRedirectHandler):
                 msg = "got a %d redirect to " % redcode
                 msg += "'%s'. Do you want to follow? [Y/n] " % redurl
 
-                kb.choices.redirect = REDIRECTION.YES if readInput(msg, default='Y', boolean=True) else REDIRECTION.NO
+                kb.choices.redirect = REDIRECTION.YES if readInput(msg, default='N', boolean=True) else REDIRECTION.NO
 
             if kb.choices.redirect == REDIRECTION.YES and method == HTTPMETHOD.POST and kb.resendPostOnRedirect is None:
                 msg = "redirect is a result of a "
