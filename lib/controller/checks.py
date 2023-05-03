@@ -157,7 +157,7 @@ def checkSqlInjection(place, parameter, value):
                 if kb.reduceTests is None and not conf.testFilter and (intersect(Backend.getErrorParsedDBMSes(), SUPPORTED_DBMS, True) or kb.heuristicDbms or injection.dbms):
                     msg = "it looks like the back-end DBMS is '%s'. " % (Format.getErrorParsedDBMSes() or kb.heuristicDbms or joinValue(injection.dbms, '/'))
                     msg += "Do you want to skip test payloads specific for other DBMSes? [Y/n]"
-                    kb.reduceTests = (Backend.getErrorParsedDBMSes() or [kb.heuristicDbms]) if readInput(msg, default='Y', boolean=True) else []
+                    kb.reduceTests = (Backend.getErrorParsedDBMSes() or [kb.heuristicDbms]) if readInput(msg, default='N', boolean=True) else []
 
             # If the DBMS has been fingerprinted (via DBMS-specific error
             # message, via simple heuristic check or via DBMS-specific
@@ -351,7 +351,7 @@ def checkSqlInjection(place, parameter, value):
                             msg += "at least one other (potential) "
                             msg += "technique found. Do you want to reduce "
                             msg += "the number of requests? [Y/n] "
-                            kb.futileUnion = readInput(msg, default='Y', boolean=True)
+                            kb.futileUnion = readInput(msg, default='N', boolean=True)
 
                         if kb.futileUnion and int(_) > 10:
                             debugMsg = "skipping test '%s'" % title
@@ -1098,7 +1098,7 @@ def heuristicCheckSqlInjection(place, parameter):
 
         if kb.ignoreCasted is None:
             message = "do you want to skip those kind of cases (and save scanning time)? %s " % ("[Y/n]" if conf.multipleTargets else "[y/N]")
-            kb.ignoreCasted = readInput(message, default='Y' if conf.multipleTargets else 'N', boolean=True)
+            kb.ignoreCasted = readInput(message, default='N' if conf.multipleTargets else 'N', boolean=True)
 
     elif result:
         infoMsg += "be injectable"
