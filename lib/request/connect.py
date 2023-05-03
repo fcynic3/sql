@@ -887,7 +887,7 @@ class Connect(object):
                     message = "there seems to be a continuous problem with connection to the target. "
                     message += "Are you sure that you want to continue? [y/N] "
 
-                    kb.choices.connError = readInput(message, default='N', boolean=True)
+                    kb.choices.connError = readInput(message, default='Y', boolean=True)
 
                 if kb.choices.connError is False:
                     raise SqlmapSkipTargetException
