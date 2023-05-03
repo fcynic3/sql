@@ -4752,7 +4752,7 @@
         <where>3</where>
         <vector>" AND SLEEP([SLEEPTIME])--</vector>
         <request>
-            <payload>" AND SLEEP([SLEEPTIME])--payload>
+            <payload>" AND SLEEP([SLEEPTIME])--</payload>
         </request>
         <response>
             <time>[SLEEPTIME]</time>
