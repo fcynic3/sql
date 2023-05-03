@@ -410,7 +410,7 @@ def _doSearch():
             message += "have GET parameters to test for SQL injection. "
             message += "Do you want to skip to the next result page? [Y/n]"
 
-            if not readInput(message, default='Y', boolean=True):
+            if not readInput(message, default='N', boolean=True):
                 raise SqlmapSilentQuitException
             else:
                 conf.googlePage += 1
